@@ -16,7 +16,7 @@ function getPlayerChoice(){
     return prompt('Your choice : ').toLowerCase() //get player choice
 }
 
-function gameRound(playerSelection, computerSelection){
+function gameRound(playerSelection, computerChoice){
 
     var winner = false; // true is player, false is computer
 
@@ -24,20 +24,20 @@ function gameRound(playerSelection, computerSelection){
 
         //Compare Round Choices
 
-        if(playerSelection == computerSelection){
+        if(playerSelection == computerChoice){
             roundTie()
             gameRound(getPlayerChoice(), getComputerChoice()) 
-        } else if (playerSelection == 'rock' && computerSelection == 'paper' ||
-        playerSelection == 'scissors' && computerSelection == 'rock' ||
-        playerSelection == 'paper' && computerSelection == 'scissors'){
+        } else if (playerSelection == 'rock' && computerChoice == 'paper' ||
+        playerSelection == 'scissors' && computerChoice == 'rock' ||
+        playerSelection == 'paper' && computerChoice == 'scissors'){
 
-            roundLoser(computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1).toLowerCase(), playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase())
+            roundLoser(computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase(), playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase())
             winner!=false
-        } else if (computerSelection == 'rock' && playerSelection == 'paper' ||
-        computerSelection == 'scissors' && playerSelection == 'rock' ||
-        computerSelection == 'paper' && playerSelection == 'scissors'){
+        } else if (computerChoice == 'rock' && playerSelection == 'paper' ||
+        computerChoice == 'scissors' && playerSelection == 'rock' ||
+        computerChoice == 'paper' && playerSelection == 'scissors'){
 
-            roundWinner(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase(), computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1).toLowerCase())
+            roundWinner(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase(), computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase())
             winner=true
         }
 
@@ -49,12 +49,12 @@ function gameRound(playerSelection, computerSelection){
     return winner
 }
 
-function roundWinner(playerChoice, computerSelection){ //Round Won by the Player
-    return console.log('You won the Round!!! ' + playerChoice + ' beats ' + computerSelection + ' Next Round!')
+function roundWinner(playerChoice, computerChoice){ //Round Won by the Player
+    return console.log('You won the Round!!! ' + playerChoice + ' beats ' + computerChoice + ' Next Round!')
 }
 
-function roundLoser(computerSelection, playerChoice){ //Round Won by the Computer
-    return console.log('You lost the Round... ' + computerSelection + ' beats ' + playerChoice + ' Next Round!')
+function roundLoser(computerChoice, playerChoice){ //Round Won by the Computer
+    return console.log('You lost the Round... ' + computerChoice + ' beats ' + playerChoice + ' Next Round!')
 }
 
 function roundTie(){ //Round Tie
