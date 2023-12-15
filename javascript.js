@@ -43,7 +43,7 @@ function gameRound(playerSelection, computerSelection){
 
     } else{ //Choice entered is not one of the possibilities
         console.log(playerSelection + ' choice is not possible... (Rock, Paper, Scissors)')
-        gameRound(getPlayerChoice(). getComputerChoice())
+        gameRound(getPlayerChoice(), getComputerChoice())
     }
 
     return winner
@@ -59,4 +59,25 @@ function roundLoser(computerSelection, playerChoice){ //Round Won by the Compute
 
 function roundTie(){ //Round Tie
     return console.log('Tie Round... Replay!')
+}
+
+function game(){
+    var scorePlayer = 0
+    var scoreComputer = 0
+    const winner = ['You are the Winner!!!', 'Computer is the Winner...']
+
+    do{
+        var roundWinner = gameRound(getPlayerChoice(), getComputerChoice())
+        if(roundWinner){
+            scorePlayer++
+        } else{
+            scoreComputer++
+        }
+    } while(scoreComputer < 5 && scorePlayer < 5)
+
+    if(scoreComputer == 5){
+        return console.log(winner[1])
+    } else{
+        return console.log(winner[0])
+    }
 }
