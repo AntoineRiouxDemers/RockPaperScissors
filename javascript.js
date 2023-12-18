@@ -1,5 +1,61 @@
+var scorePlayer = 1;
+var scoreComputer = 1;
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+const computerScore = document.getElementById('computerScore');
+const playerScore = document.getElementById('playerScore');
+const btns = document.querySelectorAll('.choices');
+const roundMessage = document.getElementById('roundMessage');
+const roundWinner = document.getElementById('roundWinner');
 
+btns.forEach(btn => btn.addEventListener('click', (event) => game(event.target.id)));
 
+function game(playerChoice){
+
+    gameRound(playerChoice, getComputerChoice());
+
+    if(isGameOver()){
+        endGame();
+        return;
+    }
+
+    // var scorePlayer = 0
+    // var scoreComputer = 0
+    // const winner = ['You are the Winner!!!', 'Computer is the Winner...']
+
+    // do{
+    //     var roundWinner = gameRound(playerChoice, getComputerChoice())
+    //     if(roundWinner){
+    //         scorePlayer++
+    //     } else{
+    //         scoreComputer++
+    //     }
+
+    //     computerScore.textContent = scoreComputer;
+    //     playerScore.textContent = scorePlayer;
+
+    // } while(scoreComputer < 5 && scorePlayer < 5)
+
+    // if(scoreComputer == 5){
+    //     console.log(winner[1])
+    // } else{
+    //     console.log(winner[0])
+    // }
+
+    // return true;
+}
+
+function isGameOver(){
+    return scoreComputer > 5 || scorePlayer > 5;
+}
+
+function endGame(){
+    roundWinner.textContent = ((scoreComputer<scorePlayer) ? 'YOU WON!!!' : 'You lost...');
+    roundMessage.textContent = 'Let\'s play another one!'
+    scoreComputer = 1;
+    scorePlayer = 1;
+}
 
 function getComputerChoice(){ //randomly return 'rock' 'paper' or 'scissors'
     //choices array
@@ -11,73 +67,29 @@ function getComputerChoice(){ //randomly return 'rock' 'paper' or 'scissors'
     return choices[randIndex]
 }
 
-
-function getPlayerChoice(){
-    return prompt('Your choice : ').toLowerCase() //get player choice
-}
-
 function gameRound(playerSelection, computerChoice){
 
-    var winner = false; // true is player, false is computer
-
-    if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
-
-        //Compare Round Choices
-
-        if(playerSelection == computerChoice){
-            roundTie()
-            gameRound(getPlayerChoice(), getComputerChoice()) 
-        } else if (playerSelection == 'rock' && computerChoice == 'paper' ||
-        playerSelection == 'scissors' && computerChoice == 'rock' ||
-        playerSelection == 'paper' && computerChoice == 'scissors'){
-
-            roundLoser(computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase(), playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase())
-            winner!=false
-        } else if (computerChoice == 'rock' && playerSelection == 'paper' ||
-        computerChoice == 'scissors' && playerSelection == 'rock' ||
-        computerChoice == 'paper' && playerSelection == 'scissors'){
-
-            roundWinner(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase(), computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1).toLowerCase())
-            winner=true
-        }
-
-    } else{ //Choice entered is not one of the possibilities
-        console.log(playerSelection + ' choice is not possible... (Rock, Paper, Scissors)')
-        gameRound(getPlayerChoice(), getComputerChoice())
+    //Compare Round Choices
+    if(playerSelection == computerChoice){
+        roundTie()
+    } 
+    else if (playerSelection == 'rock' && computerChoice == 'paper' ||
+    playerSelection == 'scissors' && computerChoice == 'rock' ||
+    playerSelection == 'paper' && computerChoice == 'scissors'){
+       roundIsWinner(false)
+    } 
+    else if (computerChoice == 'rock' && playerSelection == 'paper' ||
+    computerChoice == 'scissors' && playerSelection == 'rock' ||
+    computerChoice == 'paper' && playerSelection == 'scissors'){
+        roundIsWinner(true)
     }
-
-    return winner
 }
 
-function roundWinner(playerChoice, computerChoice){ //Round Won by the Player
-    return console.log('You won the Round!!! ' + playerChoice + ' beats ' + computerChoice + ' Next Round!')
-}
-
-function roundLoser(computerChoice, playerChoice){ //Round Won by the Computer
-    return console.log('You lost the Round... ' + computerChoice + ' beats ' + playerChoice + ' Next Round!')
+function roundIsWinner(isWinner){ //Round Winner Point addition 
+    (isWinner) ? playerScore.textContent = scorePlayer++ : computerScore.textContent = scoreComputer++;
 }
 
 function roundTie(){ //Round Tie
-    return console.log('Tie Round... Replay!')
+    console.log('Tie Round... Replay!')
 }
 
-function game(){
-    var scorePlayer = 0
-    var scoreComputer = 0
-    const winner = ['You are the Winner!!!', 'Computer is the Winner...']
-
-    do{
-        var roundWinner = gameRound(getPlayerChoice(), getComputerChoice())
-        if(roundWinner){
-            scorePlayer++
-        } else{
-            scoreComputer++
-        }
-    } while(scoreComputer < 5 && scorePlayer < 5)
-
-    if(scoreComputer == 5){
-        return console.log(winner[1])
-    } else{
-        return console.log(winner[0])
-    }
-}
