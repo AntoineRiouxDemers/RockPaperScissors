@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+}
+
 body{
     font-family:'Courier New', Courier, monospace;
     color:white;
@@ -23,17 +27,17 @@ a{
 }
 
 .header{
-    height: 25px;
+    height: 10vh;
     background-color: #040a02;
-    flex: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0;
 }
 
 #title{
     font-size: 3vmax;
+    width: auto;
+    white-space: nowrap;
 }
 
 .main{
@@ -41,6 +45,13 @@ a{
     flex: 1;
     display: flex;
     flex-direction: column;
+}
+
+#contentMessages{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1vh;
 }
 
 #scoresContainer{
@@ -85,12 +96,12 @@ a{
     align-items: center;
     justify-content: center;
     background-color: rgb(168, 168, 168, 0.2);
-    height: 17vh;
-    width: 15vh;
+    height: 11vmax;
+    width: 9vmax;
     text-align: center;
-    border-radius: 0.5em;
-    font-size: 10vh;
-    margin: 3vh;
+    border-radius: 0.3em;
+    font-size: 5vmax;
+    margin: 0 2.5vmax;
 }
 
 .footer{
