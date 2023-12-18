@@ -64,10 +64,20 @@ a{
 }
 
 #roundChoices{
-     display: flex;
-     justify-content: center;
-     list-style: none;
-     gap: 7%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    height: 19vh;
+    width: 70vw;
+    /*gap: 7%;*/
+}
+
+.container#middle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #roundChoices .choices{
@@ -81,6 +91,7 @@ a{
     text-align: center;
     border-radius: 0.5em;
     font-size: 10vh;
+    margin: 3vh;
 }
 
 .footer{
