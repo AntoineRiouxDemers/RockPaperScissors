@@ -1,6 +1,5 @@
 #roundChoices .choices:hover{
-    height: 12vmax;
-    width: 10vmax;
-    margin: 0 2vmax;
-    font-size: 6vmax;
+    transition: all .2s ease-in-out;
+    transform: scale(1.2);
+    font-size: 7vmax;
 }
