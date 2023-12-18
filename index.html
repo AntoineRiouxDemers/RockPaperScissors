@@ -10,28 +10,33 @@
 </head>
 <body>
     <div class="header">
-        <H1 class="title">Rock 🖕 Paper ✋ Scissors🖖</H1>
+        <H1 id="title">Rock 🖕 Paper ✋ Scissors🖖</H1>
     </div>
     <div class="main">
-        <div class="content" id="scores">
+        <div class="container" id="scoresContainer">
             <div class="left">
-                <p id="playerScore">Your Score : </p>
+                <p class="scoresInfos" id="playerInfo">Your Score</p>
+                <p class="scores" id="playerScore">0</p>
             </div>
-            <div class="score middle">
-                <h3 id="roundMessage">Win 5 rounds to win the game!</h3>
-                <h4 id="roundWinner">Let's start the game!</h4>
+            <div class="content">
+                <h3 class="scoreMessages" id="roundMessage">Win 5 rounds to win the game!</h3>
+                <h4 class="scoreMessages" id="roundWinner">Let's start the game!</h4>
             </div>
             <div class="right">
-                <p id="computerScore">Opponent Score : </p>
+                <p class="scoresinfos" id="computerInfo">Opponent Score</p>
+                <p class="scores" id="computerScore">0</p>
             </div>
         </div>
-        <div class="content" id="middle">
-            <div class="content" id="roundChoices">
-                <div id="rock">🖕</div>
-                <div id="paper">✋</div>
-                <div id="scissors">🖖</div>
-            </div>
+        <div class="container" id="middle">
+            <ul class="list" id="roundChoices">
+                <li class="choices" id="rock">🖕</li>
+                <li class="choices" id="paper">✋</li>
+                <li class="choices" id="scissors">🖖</li>
+            </ul>
         </div>
+    </div>
+    <div class="footer">
+        <p id="footerContent">Antoine Rioux-Demers</p>
     </div>
 </body>
 </html>
