@@ -9,7 +9,7 @@ const btns = document.querySelectorAll('.choices');
 const roundMessage = document.getElementById('roundMessage');
 const roundWinner = document.getElementById('roundWinner');
 
-btns.forEach(btn => btn.addEventListener('click', (event) => game(event.target.id)));
+btns.forEach(btn => btn.addEventListener('click', event => game(event.target.id)));
 
 function game(playerChoice){
 
@@ -55,6 +55,8 @@ function endGame(){
     roundMessage.textContent = 'Let\'s play another one!'
     scoreComputer = 1;
     scorePlayer = 1;
+    playerScore.textContent = '0';
+    computerScore.textContent = '0';
 }
 
 function getComputerChoice(){ //randomly return 'rock' 'paper' or 'scissors'
