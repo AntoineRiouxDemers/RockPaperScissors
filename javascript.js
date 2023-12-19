@@ -12,38 +12,12 @@ const roundWinner = document.getElementById('roundWinner');
 btns.forEach(btn => btn.addEventListener('click', event => game(event.target.id)));
 
 function game(playerChoice){
-
     gameRound(playerChoice, getComputerChoice());
 
     if(isGameOver()){
         endGame();
         return;
     }
-
-    // var scorePlayer = 0
-    // var scoreComputer = 0
-    // const winner = ['You are the Winner!!!', 'Computer is the Winner...']
-
-    // do{
-    //     var roundWinner = gameRound(playerChoice, getComputerChoice())
-    //     if(roundWinner){
-    //         scorePlayer++
-    //     } else{
-    //         scoreComputer++
-    //     }
-
-    //     computerScore.textContent = scoreComputer;
-    //     playerScore.textContent = scorePlayer;
-
-    // } while(scoreComputer < 5 && scorePlayer < 5)
-
-    // if(scoreComputer == 5){
-    //     console.log(winner[1])
-    // } else{
-    //     console.log(winner[0])
-    // }
-
-    // return true;
 }
 
 function isGameOver(){
