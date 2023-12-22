@@ -41,7 +41,7 @@ a{
 }
 
 .main{
-    padding: 3vh 5vh;
+    padding: 3vh 15vw;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -49,7 +49,15 @@ a{
     align-items: center;
 }
 
+#scoresleft,
+#scoresRight{
+    flex-shrink: none;
+    flex: 1;
+}
+
 #contentMessages{
+    flex: 1;
+    flex-shrink: none;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -57,9 +65,10 @@ a{
 }
 
 #scoresContainer{
+    width: 100%;
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 10%;
 }

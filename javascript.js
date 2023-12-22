@@ -35,37 +35,52 @@ function endGame(){
 
 function getComputerChoice(){ //randomly return 'rock' 'paper' or 'scissors'
     //choices array
-    const choices = ['rock', 'paper', 'scissors']
+    const choices = ['rock', 'paper', 'scissors'];
 
     //generate a random number
-    const randIndex = Math.floor(Math.random() * choices.length)
+    const randIndex = Math.floor(Math.random() * choices.length);
 
-    return choices[randIndex]
+    return choices[randIndex];
 }
 
-function gameRound(playerSelection, computerChoice){
+function gameRound(playerSelection, computerSelection){
 
     //Compare Round Choices
-    if(playerSelection == computerChoice){
-        roundTie()
+    if(playerSelection == computerSelection){
+        roundIsWinner(null, playerSelection, computerSelection);
     } 
-    else if (playerSelection == 'rock' && computerChoice == 'paper' ||
-    playerSelection == 'scissors' && computerChoice == 'rock' ||
-    playerSelection == 'paper' && computerChoice == 'scissors'){
-       roundIsWinner(false)
+    else if (playerSelection == 'rock' && computerSelection == 'paper' ||
+    playerSelection == 'scissors' && computerSelection == 'rock' ||
+    playerSelection == 'paper' && computerSelection == 'scissors'){
+       roundIsWinner(false, playerSelection, computerSelection);
     } 
-    else if (computerChoice == 'rock' && playerSelection == 'paper' ||
-    computerChoice == 'scissors' && playerSelection == 'rock' ||
-    computerChoice == 'paper' && playerSelection == 'scissors'){
-        roundIsWinner(true)
+    else if (computerSelection == 'rock' && playerSelection == 'paper' ||
+    computerSelection == 'scissors' && playerSelection == 'rock' ||
+    computerSelection == 'paper' && playerSelection == 'scissors'){
+        roundIsWinner(true, playerSelection, computerSelection);
     }
 }
 
-function roundIsWinner(isWinner){ //Round Winner Point addition 
-    (isWinner) ? playerScore.textContent = scorePlayer++ : computerScore.textContent = scoreComputer++;
+function roundIsWinner(isWinner, playerSelection, computerSelection){ //Round Winner Point addition 
+    switch(isWinner){
+        case true:
+            playerScore.textContent = scorePlayer++;
+            roundMessage.textContent = "You won the round!";
+            roundWinner.textContent = playerSelection + " beat " + computerSelection;
+            break;
+        case false:
+            computerScore.textContent = scoreComputer++;
+            roundMessage.textContent = "You lost the round...";
+            roundWinner.textContent = computerSelection + " beat " + playerSelection;
+            break;
+        case null:
+            roundMessage.textContent = "Round Tie! Replay";
+            roundWinner.textContent = "You both played " + playerSelection;
+            break;
+    }
 }
 
-function roundTie(){ //Round Tie
-    console.log('Tie Round... Replay!')
-}
+// function roundTie(){ //Round Tie
+//     console.log('Tie Round... Replay!');
+// }
 
