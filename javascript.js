@@ -20,11 +20,11 @@ function game(playerChoice){
     }
 }
 
-function isGameOver(){
+function isGameOver(){ //Check if game is over
     return scoreComputer > 5 || scorePlayer > 5;
 }
 
-function endGame(){
+function endGame(){ //ending message after the game
     roundWinner.textContent = ((scoreComputer<scorePlayer) ? 'YOU WON!!!' : 'You lost...');
     roundMessage.textContent = 'Let\'s play another one!'
     scoreComputer = 1;
@@ -44,7 +44,6 @@ function getComputerChoice(){ //randomly return 'rock' 'paper' or 'scissors'
 }
 
 function gameRound(playerSelection, computerSelection){
-
     //Compare Round Choices
     if(playerSelection == computerSelection){
         roundIsWinner(null, playerSelection, computerSelection);
@@ -63,7 +62,7 @@ function gameRound(playerSelection, computerSelection){
 
 function roundIsWinner(isWinner, playerSelection, computerSelection){ //Round Winner Point addition 
     switch(isWinner){
-        case true:
+        case true: 
             playerScore.textContent = scorePlayer++;
             roundMessage.textContent = "You won the round!";
             roundWinner.textContent = playerSelection + " beat " + computerSelection;
@@ -79,8 +78,3 @@ function roundIsWinner(isWinner, playerSelection, computerSelection){ //Round Wi
             break;
     }
 }
-
-// function roundTie(){ //Round Tie
-//     console.log('Tie Round... Replay!');
-// }
-
